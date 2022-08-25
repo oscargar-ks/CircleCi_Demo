@@ -71,11 +71,11 @@ workflows:
   version: 2
   validate:
     jobs:
-      - run-tests
-        filters:
-          branches:
-            only: 
-              - master
+      - run-tests:
+          filters:
+            branches:
+              only: 
+                - master
       - code-review:
           requires:
             - run-tests
