@@ -23,7 +23,7 @@ jobs:
           name: Run Apex Tests
           command: . build/run_apex_tests.sh
       - store_test_results:
-          path: test-results
+          path: \test-results
   code-review:
     docker:
       - image: cimg/node:18.7.0
@@ -71,11 +71,7 @@ workflows:
   version: 2
   validate:
     jobs:
-      - run-tests:
-          filters:
-            branches:
-              only: 
-                - master
+      - run-tests
       - code-review:
           requires:
             - run-tests
