@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   run-tests:
     docker:
-      - image: circleci/node:latest
+      - image: cimg/node:18.7.0
     steps:
       - checkout
       - restore_cache:
@@ -26,7 +26,7 @@ jobs:
           path: test-results
   code-review:
     docker:
-      - image: circleci/node:latest
+      - image: cimg/node:18.7.0
     steps:
       - checkout
       - restore_cache:
@@ -47,7 +47,7 @@ jobs:
           path: sfdxScannerAnalysis.csv
   deploy-code:
     docker:
-      - image: circleci/node:latest
+      - image: cimg/node:18.7.0
     steps:
       - checkout
       - restore_cache:
@@ -71,7 +71,11 @@ workflows:
   version: 2
   validate:
     jobs:
-      - run-tests
+      - run-tests:
+          filters:
+            branches:
+              only: 
+                - master
       - code-review:
           requires:
             - run-tests
