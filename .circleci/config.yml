@@ -88,7 +88,7 @@ jobs:
           command: . build/login_to_org.sh
       - run:
           name: Run Apex Tests
-          command: . build/run_apex_tests_org.sh
+          command: . build/run_apex_tests.sh
       - store_test_results:
           path: test-results
   code-review-prod:
