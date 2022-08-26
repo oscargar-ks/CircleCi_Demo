@@ -150,10 +150,6 @@ workflows:
           requires:
             - code-review-sandbox
       - run-tests-prod:
-          filters:
-            branches:
-              only: 
-                - master
           requires:
             - deploy-code-sandbox  
       - code-review-prod:
