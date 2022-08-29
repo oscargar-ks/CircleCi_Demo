@@ -151,10 +151,7 @@ workflows:
             - code-review-sandbox
       - run-tests-prod:
           requires:
-            - deploy-code-sandbox  
-      - code-review-prod:
-          requires:
-            - run-tests-prod
+            - deploy-code-sandbox
       - deploy-code-prod:
           requires:
-            - code-review-prod
+            - run-tests-prod
